@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Timetable | Mutovu TSS</title>
+<style>
+:root{--navy:#071b36;--blue:#0756a5;--gold:#f4b942;--light:#f3f7fc;--ink:#17283d}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--ink);line-height:1.6}
+header{background:var(--navy);color:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:800;color:white;text-decoration:none;letter-spacing:1px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:17px;flex-wrap:wrap}
+nav a{color:#eaf2ff;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--gold)}
+.hero{background:linear-gradient(120deg,#06264c,#0873bd);color:white;padding:48px 5%;text-align:center}
+.hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,42px)}
+.hero p{margin:0;color:#e0edff}
+main{width:min(1150px,92%);margin:32px auto}
+.panel{background:white;padding:25px;border-radius:14px;box-shadow:0 8px 28px #102c4a12;margin-bottom:24px}
+.panel h2{margin-top:0;color:var(--navy)}
+.filters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+label{display:block;font-weight:700;margin-bottom:7px}
+select{width:100%;padding:12px;border:1px solid #cbd6e3;border-radius:8px;background:white;font-size:15px;color:var(--ink)}
+.notice{background:#fff7e5;border-left:4px solid var(--gold);padding:12px 15px;border-radius:6px;margin:18px 0 0;font-size:14px}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.summary h2{margin:0}
+.pill{background:#e8f2ff;color:#064b91;padding:7px 12px;border-radius:30px;font-weight:700;font-size:13px}
+.table-wrap{overflow-x:auto;margin-top:18px}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{padding:13px 12px;border:1px solid #dce4ee;text-align:left}
+th{background:var(--navy);color:white}
+tbody tr:nth-child(even){background:#f5f8fc}
+tbody tr:hover{background:#eaf3ff}
+td:first-child{font-weight:700;color:var(--blue);white-space:nowrap}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+button{border:0;border-radius:8px;padding:11px 17px;font-weight:700;cursor:pointer}
+.print{background:var(--blue);color:white}
+.reset{background:#e8edf4;color:var(--navy)}
+footer{text-align:center;background:var(--navy);color:#d7e3f3;padding:22px;margin-top:40px;font-size:14px}
+@media(max-width:700px){.filters{grid-template-columns:1fr}.panel{padding:18px}header{justify-content:center}nav{justify-content:center}}
+@media print{header, .hero, .filters-panel, .actions, footer{display:none!important}body{background:white}.panel{box-shadow:none;padding:0}main{width:100%;margin:0}.notice{display:none}}
+</style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">MUTOVU <span>TSS</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="departments.html">Departments</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="news.html">News</a>
+    <a href="contact 1.html">Contact</a>
+  
+            <a href="timetable.html">Timetable</a>
+</nav>
+</header>
+
+<section class="hero">
+  <h1>Student Timetable</h1>
+  <p>Select your trade, class and level to view a sample weekly timetable.</p>
+</section>
+
+<main>
+  <section class="panel filters-panel">
+    <h2>Choose Your Class</h2>
+    <div class="filters">
+      <div>
+        <label for="trade">Select Trade</label>
+        <select id="trade">
+          <option value="Software Development">Software Development</option>
+          <option value="Building Construction">Building Construction</option>
+          <option value="Multimedia Production">Multimedia Production</option>
+        </select>
+      </div>
+      <div>
+        <label for="className">Select Class</label>
+        <select id="className">
+          <option value="A">Class A</option>
+          <option value="B">Class B</option>
+        </select>
+      </div>
+      <div>
+        <label for="level">Select Level</label>
+        <select id="level">
+          <option value="L3">Level 3</option>
+          <option value="L4">Level 4</option>
+          <option value="L5">Level 5</option>
+        </select>
+      </div>
+    </div>
+    <p class="notice"><strong>Sample timetable:</strong> These subjects and lesson times are demonstration content, not an official Mutovu TSS timetable. Replace them with the school's approved schedule.</p>
+  </section>
+
+  <section class="panel">
+    <div class="summary">
+      <h2 id="tableTitle">Weekly Timetable</h2>
+      <span class="pill" id="classLabel">Software Development · Class A · L3</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Day</th><th>08:00–10:00</th><th>10:30–12:30</th><th>13:30–15:30</th></tr></thead>
+        <tbody id="timetableBody">
+          <tr><td>Monday</td><td>HTML & CSS</td><td>Mathematics</td><td>Computer Practice</td></tr>
+          <tr><td>Tuesday</td><td>English</td><td>JavaScript</td><td>Database Basics</td></tr>
+          <tr><td>Wednesday</td><td>Communication</td><td>Programming</td><td>Entrepreneurship</td></tr>
+          <tr><td>Thursday</td><td>Web Design</td><td>Computer Systems</td><td>Practical Work</td></tr>
+          <tr><td>Friday</td><td>Networking</td><td>Project Work</td><td>Sports & Games</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="print" onclick="window.print()">Print Timetable</button>
+      <button class="reset" id="resetBtn" type="button">Reset Selection</button>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> Mutovu TSS · Sample Student Timetable</footer>
+
+<script>
+const sampleSubjects = {
+  "Software Development": [
+    ["HTML & CSS","Mathematics","Computer Practice"],
+    ["English","JavaScript","Database Basics"],
+    ["Communication","Programming","Entrepreneurship"],
+    ["Web Design","Computer Systems","Practical Work"],
+    ["Networking","Project Work","Sports & Games"]
+  ],
+  "Building Construction": [
+    ["Technical Drawing","Mathematics","Building Materials"],
+    ["English","Construction Practice","Measurement"],
+    ["Communication","Site Preparation","Entrepreneurship"],
+    ["Building Science","Workshop Practice","Safety"],
+    ["Estimation","Project Work","Sports & Games"]
+  ],
+  "Multimedia Production": [
+    ["Graphic Design","English","Computer Practice"],
+    ["Photography","Communication","Image Editing"],
+    ["Mathematics","Video Production","Entrepreneurship"],
+    ["Audio Production","Digital Illustration","Practical Work"],
+    ["Animation","Project Work","Sports & Games"]
+  ]
+};
+const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+const trade = document.getElementById("trade");
+const className = document.getElementById("className");
+const level = document.getElementById("level");
+const body = document.getElementById("timetableBody");
+const label = document.getElementById("classLabel");
+
+function updateTimetable(){
+  const selectedTrade = trade.value;
+  const lessons = sampleSubjects[selectedTrade];
+  body.innerHTML = "";
+  days.forEach((day,index)=>{
+    const row = document.createElement("tr");
+    const dayCell = document.createElement("td");
+    dayCell.textContent = day;
+    row.appendChild(dayCell);
+    lessons[index].forEach(subject=>{
+      const cell = document.createElement("td");
+      cell.textContent = subject;
+      row.appendChild(cell);
+    });
+    body.appendChild(row);
+  });
+  label.textContent = `${selectedTrade} · Class ${className.value} · ${level.value}`;
+}
+[trade,className,level].forEach(control=>control.addEventListener("change",updateTimetable));
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  trade.value="Software Development";
+  className.value="A";
+  level.value="L3";
+  updateTimetable();
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+updateTimetable();
+</script>
+    <script src="script.js" defer></script>
+</body>
+</html>
